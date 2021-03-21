@@ -42,9 +42,8 @@ export class RetiroComponent implements OnInit {
             console.log('transferencia registrada',transfer);
           });
         });
-        console.log('Retiro efectuado');
+        alert('Retiro realizado');
       }else{
-        console.log('Saldo insuficiente');
         alert('Saldo insuficiente');
       }
     });

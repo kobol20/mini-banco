@@ -21,19 +21,15 @@ export class CargaComponent implements OnInit {
               private transferservice: TransferService) {}
 
   ngOnInit() {
-    console.log('carga saldo rutaactiva rut :',this.rutaActiva.snapshot.params);
     this.cuentaservice.selectedCuenta = new Cuenta();
   }
 
   carga(form?: NgForm) {
-    console.log('Cargar saldo ',form.value.monto);
     var rut =  this.rutaActiva.snapshot.paramMap.get('rut');
     this.cuentaservice.selectedCuenta.rut = rut;
     this.cuentaservice.selectedCuenta.cuenta = rut.replace(/\./g,'');
     this.cuentaservice.selectedCuenta.monto = form.value.monto;
-    console.log('obtener cuenta');
     this.cuentaservice.getCuenta().subscribe((res) =>{
-      console.log('cuenta obtenida :',res);
       var cuenta = res.find(x => x.rut === this.cuentaservice.selectedCuenta.rut);
       cuenta.saldo = Number(cuenta.saldo) + Number(this.cuentaservice.selectedCuenta.monto);
 
@@ -44,12 +40,12 @@ export class CargaComponent implements OnInit {
         transfer.monto = this.cuentaservice.selectedCuenta.monto ;
         transfer.rut = this.cuentaservice.selectedCuenta.rut;
         transfer.tipo = 'Carga';
+        alert('Carga Realizada');
         this.transferservice.createTransfer(transfer).subscribe((res) =>{
           console.log('transferencia registrada',transfer);
         });
       });
     });
-    console.log('fin carga');
   }
   
   volver(){

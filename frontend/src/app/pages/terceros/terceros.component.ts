@@ -26,30 +26,25 @@ export class TercerosComponent implements OnInit {
   }
 
   transferencias(form?: NgForm) {
-    console.log('Cargar terceros ',form.value.monto);
     this.cuentaservice.selectedCuenta.rut = form.value.rut;
     this.cuentaservice.selectedCuenta.cuenta = form.value.rut;
     this.cuentaservice.selectedCuenta.monto = form.value.monto;
-    console.log('obtener cuenta');
     this.cuentaservice.getCuenta().subscribe((res) =>{
-      console.log('cuenta obtenida :',res);
       var cuenta = res.find(x => x.rut === this.cuentaservice.selectedCuenta.rut);
-      console.log('cuenta match rut ',cuenta);
       if(cuenta){
           cuenta.saldo = Number(cuenta.saldo) + Number(this.cuentaservice.selectedCuenta.monto);
           this.cuentaservice.putSaldo(cuenta).subscribe((res) =>{
-            console.log('carga realizada ',res);
             var transfer = new Transferencia();
             transfer.cuenta = this.cuentaservice.selectedCuenta.cuenta;
             transfer.monto = this.cuentaservice.selectedCuenta.monto ;
             transfer.rut = this.cuentaservice.selectedCuenta.rut;
             transfer.tipo = 'transferencia';
+            alert('transferencia realizada');
             this.transferservice.createTransfer(transfer).subscribe((res) =>{
               console.log('transferencia registrada');
             });
           });
       }else{
-        console.log('cuenta no existe');
         alert('cuenta no existe');
       }
     });
