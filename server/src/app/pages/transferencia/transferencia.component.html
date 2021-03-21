@@ -1,0 +1,38 @@
+<div class="container-login100">
+    <div class="wrap-login100 p-t-50 p-b-90">
+        <form class="login100-form validate-form flex-sb flex-w" #transferForm="ngForm" (ngSubmit)="volver(transferForm)">
+
+            <span class="login100-form-title p-b-51">
+                    Listado Transferencias
+                </span>
+            <div class="wrap-input100 m-b-16">
+                <table>
+                    <tr>
+                        <td>Cuenta</td>
+                        <td></td>
+                        <td>Monto</td>
+                        <td></td>
+                        <td>Tipo</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+
+                    </tr>
+                    <tr *ngFor="let transfers of transferservice.transferencias">
+                        <td>{{transfers.cuenta}}</td>
+                        <td></td>
+                        <td>{{transfers.monto}}</td>
+                        <td></td>
+                        <td>{{transfers.tipo}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="container-login100-form-btn m-t-17">
+                <button class="login100-form-btn" type="submit">
+                        Volver
+                    </button>
+            </div>
+
+        </form>
+    </div>
+</div>

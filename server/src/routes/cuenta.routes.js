@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const user = require("../controllers/cuenta.controller");
+const cuenta = require("../controllers/cuenta.controller");
 
-router.get("/", cuenta.getSaldo);
+router.get("/", cuenta.getCuenta);
 
-router.post("/", cuenta.postSaldo);
+router.post("/", cuenta.postCuenta);
+
+router.put("/:id/:saldo", cuenta.putSaldo);
 
 module.exports = router;
