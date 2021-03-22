@@ -8,7 +8,7 @@
 
             <!-- <span class="text-danger">El correo es obligatorio</span> -->
             <div class="wrap-input100 m-b-16">
-                <input class="input100" type="text" name="monto" #monto="ngModel" [(ngModel)]="cuentaservice.selecteCuenta.monto" placeholder="monto">
+                <input class="input100" type="number" name="monto" #monto="ngModel" [(ngModel)]="cuentaservice.selectedCuenta.monto" placeholder="monto">
 
                 <span class="focus-input100"></span>
             </div>
@@ -18,6 +18,11 @@
             <div class="container-login100-form-btn m-t-17">
                 <button class="login100-form-btn" type="submit">
                         Aceptar
+                    </button>
+            </div>
+            <div class="container-login100-form-btn m-t-17">
+                <button class="login100-form-btn" (click)="volver()">
+                        Volver
                     </button>
             </div>
 

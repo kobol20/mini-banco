@@ -4,15 +4,33 @@
       Dashboard
   </span>
     <div>
-        <a routerLink="/carga" class="txt1">
-              Carga Saldo
-          </a>
+        <div>
+            <a (click)="carga()" class="txt1">
+                Carga Saldo
+            </a>
+        </div>
+
+        <div>
+            <a (click)="retiro()" class="txt1">
+                Retira Saldo
+            </a>
+        </div>
+        <div>
+            <a (click)="terceros()" class="txt1">
+                Transferencia a otras cuentas
+            </a>
+        </div>
+        <div>
+            <a (click)="transferencias()" class="txt1">
+                Listado Transferencias
+            </a>
+        </div>
+        <div>
+            <a routerLink="home" class="txt1">
+                Home
+            </a>
+        </div>
     </div>
 
-    <div>
-        <a routerLink="/retira" class="txt1">
-            Retira Saldo
-        </a>
-    </div>
 
 </form>
